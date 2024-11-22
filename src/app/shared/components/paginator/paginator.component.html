@@ -1,0 +1,24 @@
+<div class="flex m-2 p-2">
+
+  <div>
+    <button (click)="onClickPrev()" mat-button mat-flat-button>Prev</button>
+  </div>
+
+  <div>
+
+    @for (page of displayTotalPages; track page) {
+      <button
+        mat-button
+        [ngClass]="{'active-page': page === currentPage}"
+        (click)="onClickPage(page)"
+      >{{ page }}</button>
+    }
+
+  </div>
+
+  <div>
+    <button mat-button mat-flat-button (click)="onClickNext()">Next</button>
+
+  </div>
+
+</div>

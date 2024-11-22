@@ -1,0 +1,45 @@
+@if(loading) {
+  <div class="">
+
+    @for (character of characters; track character.id) {
+
+    <mat-card class="" appearance="outlined">
+      <mat-card-header>
+        <mat-card-title class="text-white">
+          {{ character.name }}
+        </mat-card-title>
+      </mat-card-header>
+
+      <img mat-card-image [src]="character.image" [alt]="character.name">
+
+      <mat-card-content class="text-white">
+        <mat-list>
+          <mat-list-item>
+            Gender: {{character.gender}}
+          </mat-list-item>
+          <mat-list-item>
+            specie {{ character.species }}
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+
+    </mat-card>
+
+    } @empty {
+      <div>Not Characters</div>
+    }
+  </div>
+} @else {
+  <div>Loading...</div>
+}
+
+
+<div>
+  <shared-paginator
+    [totalPages]="totalPages"
+    [currentPage]="currentPage"
+    (onNext)="onNext($event)"
+    (onPage)="onPage($event)"
+    (onPrev)="onPrev($event)"
+  ></shared-paginator>
+</div>
